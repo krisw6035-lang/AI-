@@ -1,0 +1,75 @@
+<!-- 首页：房子魔法空间 · 新装 -->
+<view class="page-container">
+  <!-- Hero 区域 -->
+  <view class="hero-section">
+    <view class="hero-brand">{{brandName}}</view>
+    <view class="hero-title">{{productName}}</view>
+    <view class="hero-slogan">{{slogan}}</view>
+  </view>
+
+  <!-- 双入口 -->
+  <view class="entry-section">
+    <view class="entry-card entry-indoor" bindtap="goIndoor">
+      <view class="entry-icon">🏠</view>
+      <view class="entry-name">室内改装</view>
+      <view class="entry-desc">客厅 · 卧室 · 餐厅 · 书房</view>
+    </view>
+    <view class="entry-card entry-outdoor" bindtap="goOutdoor">
+      <view class="entry-icon">🏛</view>
+      <view class="entry-name">室外改装</view>
+      <view class="entry-desc">外立面 · 庭院 · 门头 · 外墙</view>
+    </view>
+  </view>
+
+  <!-- 操作流程 -->
+  <view class="section-title">三步获取装修效果图</view>
+  <view class="steps-section">
+    <view class="step-item">
+      <view class="step-num">1</view>
+      <view class="step-label">上传空间照片</view>
+    </view>
+    <view class="step-arrow">→</view>
+    <view class="step-item">
+      <view class="step-num">2</view>
+      <view class="step-label">选择设计风格</view>
+    </view>
+    <view class="step-arrow">→</view>
+    <view class="step-item">
+      <view class="step-num">3</view>
+      <view class="step-label">AI 生成效果</view>
+    </view>
+  </view>
+
+  <!-- 精选案例 -->
+  <view class="section-title">精选案例</view>
+  <view class="section-subtitle">看看 AI 改造后的惊艳效果</view>
+
+  <view wx:if="{{loading}}" class="loading-hint">加载中...</view>
+
+  <view wx:elif="{{cases.length > 0}}" class="cases-grid">
+    <view
+      wx:for="{{cases}}"
+      wx:key="id"
+      class="case-card"
+      data-id="{{item.id}}"
+      bindtap="goCaseDetail"
+    >
+      <image class="case-image" src="{{item.afterImageUrl}}" mode="aspectFill" />
+      <view class="case-info">
+        <view class="case-title">{{item.title}}</view>
+        <view class="case-style">{{item.styleName}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-hint">
+    <view class="text-muted">暂无案例，敬请期待</view>
+  </view>
+
+  <view class="more-link" bindtap="goMoreCases">
+    查看更多案例 →
+  </view>
+
+  <!-- 底部间距 -->
+  <view style="height: 40rpx;"></view>
+</view>

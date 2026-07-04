@@ -1,0 +1,28 @@
+<view class="page-container">
+  <view class="scene-tabs">
+    <view class="tab {{sceneType === '' ? 'active' : ''}}" bindtap="switchScene" data-scene="">全部</view>
+    <view class="tab {{sceneType === 'INDOOR' ? 'active' : ''}}" bindtap="switchScene" data-scene="INDOOR">室内</view>
+    <view class="tab {{sceneType === 'OUTDOOR' ? 'active' : ''}}" bindtap="switchScene" data-scene="OUTDOOR">室外</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{cases.length === 0}}" class="empty">暂无案例，敬请期待</view>
+
+  <view wx:else class="case-list">
+    <view class="case-card" wx:for="{{cases}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+      <image class="case-img" src="{{item.afterImageUrl || item.beforeImageUrl}}" mode="aspectFill" lazy-load />
+      <view class="case-info">
+        <view class="case-title">{{item.title}}</view>
+        <view class="case-meta">
+          <text class="case-tag">{{item.sceneType === 'INDOOR' ? '室内' : '室外'}}</text>
+          <text class="case-style" wx:if="{{item.styleName}}">{{item.styleName}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="load-more" wx:if="{{hasMore}}">
+    <view class="load-btn" bindtap="loadMore">加载更多</view>
+  </view>
+</view>

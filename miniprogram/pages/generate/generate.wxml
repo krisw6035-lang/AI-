@@ -1,0 +1,56 @@
+<!-- 生成进度页面 -->
+<view class="page-container">
+  <!-- 状态标题 -->
+  <view class="status-header">
+    <view wx:if="{{!status || status === 'RUNNING' || status === 'WAITING'}}" class="header-icon">✨</view>
+    <view wx:elif="{{status === 'SUCCESS'}}" class="header-icon">🎉</view>
+    <view wx:else class="header-icon">😔</view>
+
+    <view class="header-title">
+      <block wx:if="{{!status || status === 'RUNNING' || status === 'WAITING'}}">AI 正在改造你的空间</block>
+      <block wx:elif="{{status === 'SUCCESS'}}">生成完成！</block>
+      <block wx:elif="{{status === 'TIMEOUT'}}">生成超时</block>
+      <block wx:else>生成失败</block>
+    </view>
+    <view wx:if="{{errorMessage}}" class="header-error">{{errorMessage}}</view>
+  </view>
+
+  <!-- 进度条 -->
+  <view class="progress-section" wx:if="{{!status || status === 'RUNNING' || status === 'WAITING'}}">
+    <view class="progress-bar-wrap">
+      <view class="progress-bar" style="width: {{progressPercent}}%"></view>
+    </view>
+
+    <!-- 步骤列表 -->
+    <view class="steps-list">
+      <view
+        wx:for="{{steps}}" wx:key="key"
+        class="step-item {{index < activeStep ? 'done' : ''}} {{index === activeStep ? 'active' : ''}}"
+      >
+        <view class="step-dot">
+          <text wx:if="{{index < activeStep}}">✓</text>
+          <text wx:elif="{{index === activeStep}}">●</text>
+          <text wx:else>{{index + 1}}</text>
+        </view>
+        <view class="step-label">{{item.label}}</view>
+        <view wx:if="{{index < activeStep}}" class="step-check">✅</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成功 -->
+  <view wx:elif="{{status === 'SUCCESS'}}" class="success-section">
+    <view class="success-anim">✅</view>
+    <view class="success-text">马上进入效果图...</view>
+  </view>
+
+  <!-- 失败 -->
+  <view wx:else class="fail-section">
+    <view class="fail-icon">⚠️</view>
+    <view class="fail-text">{{errorMessage || '未知错误'}}</view>
+    <view class="fail-actions">
+      <view class="btn-outline" bindtap="goRetry">返回重试</view>
+      <view class="btn-primary" bindtap="goHome">返回首页</view>
+    </view>
+  </view>
+</view>

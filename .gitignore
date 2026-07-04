@@ -1,0 +1,40 @@
+# ========================================
+# 房子魔法空间 · 新装 — Git 忽略规则
+# ========================================
+
+# --- Maven / Java ---
+backend/target/
+*.jar
+*.war
+*.class
+
+# --- IDE ---
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Sensitive ---
+*.env
+application-local.yml
+*-local.yml
+
+# --- Uploads (dev) ---
+backend/upload/
+
+# --- Logs ---
+logs/
+*.log
+
+# --- Node (if any) ---
+node_modules/
+
+# --- Miniprogram ---
+miniprogram/.idea/

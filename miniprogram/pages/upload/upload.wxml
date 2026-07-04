@@ -1,0 +1,40 @@
+<!-- 图片上传页面 -->
+<view class="page-container">
+  <view class="scene-header">
+    <view class="scene-icon">{{scene === 'INDOOR' ? '🏠' : '🏛'}}</view>
+    <view class="scene-title">{{sceneName}}</view>
+    <view class="scene-tip">请上传需要改造的空间照片</view>
+  </view>
+
+  <view class="image-area">
+    <view wx:if="{{!imagePath}}" class="upload-placeholder">
+      <view class="placeholder-icon">📷</view>
+      <view class="placeholder-text">上传空间照片</view>
+      <view class="placeholder-tip">支持 jpg、png、webp，最大 10MB</view>
+    </view>
+    <image wx:else class="preview-image" src="{{imagePath}}" mode="aspectFit" bindtap="previewImage" />
+    <view wx:if="{{uploaded}}" class="upload-badge">✓ 已上传</view>
+  </view>
+
+  <view class="action-buttons">
+    <block wx:if="{{!uploaded}}">
+      <view class="btn-primary" bindtap="chooseFromAlbum">📁 从相册选择</view>
+      <view class="btn-outline" bindtap="takePhoto">📸 拍照上传</view>
+      <view wx:if="{{imagePath}}" class="btn-primary" style="margin-top:20rpx" bindtap="doUpload">
+        {{uploading ? '上传中...' : '☁️ 上传到服务器'}}
+      </view>
+    </block>
+    <block wx:else>
+      <view class="btn-outline" bindtap="reselect">🔄 重新选择</view>
+      <view class="btn-primary" bindtap="goDesign">下一步：选择设计风格 →</view>
+    </block>
+  </view>
+
+  <view class="tips-section">
+    <view class="tip-title">📌 拍照建议</view>
+    <view class="tip-item">• 正面拍摄，保持画面水平</view>
+    <view class="tip-item">• 光线充足，避免逆光</view>
+    <view class="tip-item">• 尽量展示完整空间</view>
+    <view class="tip-item">• 避免杂物遮挡主要区域</view>
+  </view>
+</view>

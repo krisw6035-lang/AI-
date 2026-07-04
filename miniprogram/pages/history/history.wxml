@@ -1,0 +1,39 @@
+<view class="page-container">
+  <view class="user-card" wx:if="{{userInfo}}">
+    <view class="user-avatar">{{userInfo.nickname ? userInfo.nickname.charAt(0) : '👤'}}</view>
+    <view class="user-info">
+      <view class="user-name">{{userInfo.nickname || '用户'}}</view>
+      <view class="user-points" bindtap="goPoints">💎 {{points}} 积分 ›</view>
+    </view>
+  </view>
+
+  <view class="section-title">我的生成记录</view>
+
+  <view wx:if="{{loading}}" class="empty-state">加载中...</view>
+  <view wx:elif="{{tasks.length === 0}}" class="empty-state">
+    <view class="empty-icon">📭</view>
+    <view class="empty-text">暂无生成记录</view>
+    <view class="empty-tip">去首页上传照片开始AI改造吧</view>
+  </view>
+
+  <block wx:else>
+    <view wx:for="{{tasks}}" wx:key="id" class="task-card" data-id="{{item.id}}" data-status="{{item.status}}" bindtap="goResult">
+      <view class="task-header flex-between">
+        <view class="task-scene">{{item.sceneType === 'INDOOR' ? '🏠 室内' : '🏛 室外'}}</view>
+        <view class="task-status">
+          {{item.status === 'SUCCESS' ? '✅ 成功' : ''}}
+          {{item.status === 'FAILED' ? '❌ 失败' : ''}}
+          {{item.status === 'TIMEOUT' ? '⏰ 超时' : ''}}
+          {{item.status === 'RUNNING' ? '🔄 生成中' : ''}}
+          {{item.status === 'WAITING' ? '⏳ 等待中' : ''}}
+        </view>
+      </view>
+      <view class="task-body">
+        <view class="task-style">{{item.styleName || '未知风格'}}</view>
+        <view class="task-time">{{item.createdAt}}</view>
+      </view>
+    </view>
+    <view wx:if="{{hasMore}}" class="load-more" bindtap="loadMore">加载更多...</view>
+    <view wx:else class="load-more text-muted">— 没有更多了 —</view>
+  </block>
+</view>

@@ -1,0 +1,19 @@
+<view class="page-container" wx:if="{{detail}}">
+  <image class="detail-img" src="{{detail.afterImageUrl || detail.beforeImageUrl}}" mode="aspectFit" />
+  <view class="info-card">
+    <view class="detail-title">{{detail.title}}</view>
+    <view class="detail-desc" wx:if="{{detail.description}}">{{detail.description}}</view>
+    <view class="info-row" wx:if="{{detail.sceneType}}">
+      <text class="info-label">场景类型</text>
+      <text class="info-value">{{detail.sceneType === 'INDOOR' ? '室内' : '室外'}}</text>
+    </view>
+    <view class="info-row" wx:if="{{detail.styleName}}">
+      <text class="info-label">设计风格</text>
+      <text class="info-value">{{detail.styleName}}</text>
+    </view>
+  </view>
+  <view class="action-bar">
+    <button class="btn-secondary" bindtap="goBack">返回案例列表</button>
+  </view>
+</view>
+<view wx:else class="loading">加载中...</view>

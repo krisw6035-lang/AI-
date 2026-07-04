@@ -1,0 +1,11 @@
+.page-container { padding: 16px; background: #F5F5F5; min-height: 100vh; }
+.hero-section { text-align: center; padding: 32px 16px; }
+.brand-icon { font-size: 48px; margin-bottom: 12px; }
+.brand-name { font-size: 22px; font-weight: 700; color: #2C3E50; }
+.brand-slogan { font-size: 14px; color: #C9A96E; margin-top: 8px; }
+.version-text { font-size: 12px; color: #ccc; margin-top: 8px; }
+.card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+.card-title { font-size: 17px; font-weight: 600; color: #2C3E50; margin-bottom: 12px; }
+.card-text { font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 4px; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: #F0F0F0; color: #2C3E50; font-size: 13px; padding: 6px 14px; border-radius: 16px; }

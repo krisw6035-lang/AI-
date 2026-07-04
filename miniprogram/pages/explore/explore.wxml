@@ -1,0 +1,41 @@
+<view class="page-container">
+  <view class="hero-section">
+    <view class="hero-title">探索装修灵感</view>
+    <view class="hero-desc">发现热门风格和设计趋势</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">热门风格</view>
+    <view class="style-grid">
+      <view class="style-item" wx:for="{{styles}}" wx:key="id" bindtap="goDesign" data-style="{{item.optionName}}">
+        <view class="style-icon">🎨</view>
+        <view class="style-name">{{item.optionName}}</view>
+        <view class="style-desc" wx:if="{{item.optionDesc}}">{{item.optionDesc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">艺术肌理</view>
+    <view class="style-grid">
+      <view class="style-item" wx:for="{{textures}}" wx:key="id">
+        <view class="style-icon">✨</view>
+        <view class="style-name">{{item.optionName}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">热门色号</view>
+    <view class="color-grid">
+      <view class="color-item" wx:for="{{wallColors}}" wx:key="id">
+        <view class="color-swatch" style="background-color: {{item.colorHex || '#ccc'}}"></view>
+        <view class="color-name">{{item.optionKey}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-area">
+    <button class="cta-btn" bindtap="startDesign">开始设计你的空间</button>
+  </view>
+</view>

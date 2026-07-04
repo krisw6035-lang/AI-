@@ -1,0 +1,44 @@
+<view class="page-container">
+  <view class="image-section" wx:if="{{task}}">
+    <image class="main-image"
+      src="{{showOriginal ? task.originalImageUrl : task.resultImageUrl}}"
+      mode="aspectFit" data-type="{{showOriginal ? 'original' : 'result'}}"
+      bindtap="previewImage" />
+    <view class="toggle-bar">
+      <view class="toggle-btn {{showOriginal ? 'active' : ''}}" bindtap="toggleView">📷 原图</view>
+      <view class="toggle-btn {{!showOriginal ? 'active' : ''}}" bindtap="toggleView">✨ 效果图</view>
+    </view>
+  </view>
+  <view wx:else class="loading-state">加载中...</view>
+
+  <view class="params-section" wx:if="{{task}}">
+    <view class="section-title">设计参数</view>
+    <view class="param-grid">
+      <view class="param-item">
+        <view class="param-label">场景</view>
+        <view class="param-value">{{task.sceneType === 'INDOOR' ? '室内' : '室外'}}</view>
+      </view>
+      <view class="param-item">
+        <view class="param-label">风格</view>
+        <view class="param-value">{{task.styleName || '-'}}</view>
+      </view>
+      <view class="param-item" wx:if="{{task.textureName && task.textureName !== '无'}}">
+        <view class="param-label">肌理</view>
+        <view class="param-value">{{task.textureName}}</view>
+      </view>
+      <view class="param-item" wx:if="{{task.wallColorCode}}">
+        <view class="param-label">色号</view>
+        <view class="param-value">{{task.wallColorCode}}</view>
+      </view>
+    </view>
+    <view class="points-cost">本次消耗 <text class="cost-num">{{task.pointsCost || 10}}</text> 积分</view>
+  </view>
+
+  <view class="action-section" wx:if="{{task}}">
+    <view class="action-row">
+      <view class="btn-save" bindtap="saveImage">💾 保存到相册</view>
+      <view class="btn-retry" bindtap="retry">🔄 重新生成</view>
+    </view>
+    <view class="btn-home" bindtap="goHome">🏠 返回首页</view>
+  </view>
+</view>

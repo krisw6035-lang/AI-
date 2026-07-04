@@ -1,0 +1,37 @@
+<view class="page-container">
+  <view class="card">
+    <view class="card-title">联系我们</view>
+    <view class="info-item">
+      <view class="info-label">客服微信</view>
+      <view class="info-value">xinzhuang_kefu</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">联系电话</view>
+      <view class="info-value">400-XXX-XXXX</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">工作时间</view>
+      <view class="info-value">周一至周五 9:00-18:00</view>
+    </view>
+    <view class="info-item">
+      <view class="info-label">商务合作</view>
+      <view class="info-value">bd@xinzhuang.cn</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">意见反馈</view>
+    <view class="form-group">
+      <textarea class="textarea" placeholder="请描述您遇到的问题或建议..." maxlength="500" value="{{content}}" bindinput="onInput" />
+      <view class="char-count">{{content.length || 0}}/500</view>
+    </view>
+    <button class="submit-btn" bindtap="submitFeedback" disabled="{{!content}}">提交反馈</button>
+  </view>
+
+  <view class="card">
+    <view class="card-title">其他页面</view>
+    <view class="link-item" bindtap="goAgreement">用户协议</view>
+    <view class="link-item" bindtap="goPrivacy">隐私政策</view>
+    <view class="link-item" bindtap="goAbout">关于我们</view>
+  </view>
+</view>

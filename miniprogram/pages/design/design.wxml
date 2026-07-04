@@ -1,0 +1,110 @@
+<!-- 设计选择页面 -->
+<view class="page-container">
+  <!-- 顶部预览 -->
+  <view class="preview-bar" bindtap="previewImage">
+    <image class="preview-thumb" src="{{imageUrl}}" mode="aspectFill" />
+    <view class="preview-label">{{sceneName}} · 设计参数选择</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <view class="loading-text">加载设计选项中...</view>
+  </view>
+
+  <block wx:else>
+    <!-- 设计风格 -->
+    <view class="section">
+      <view class="section-title">🎨 设计风格 <text class="required">*</text></view>
+      <view class="option-grid">
+        <view
+          wx:for="{{styles}}" wx:key="id"
+          class="option-card {{selectedStyleId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}" data-name="{{item.optionName}}"
+          bindtap="selectStyle"
+        >
+          <view class="option-name">{{item.optionName}}</view>
+          <view wx:if="{{item.optionDesc}}" class="option-desc">{{item.optionDesc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 自定义风格输入 -->
+    <view wx:if="{{customStyle}}" class="section">
+      <view class="section-title">✏️ 描述您期望的风格</view>
+      <textarea
+        class="custom-input"
+        placeholder="例如：奶油风、侘寂风、轻法式..."
+        maxlength="200"
+        value="{{customRequirement}}"
+        bindinput="onInputRequirement"
+      />
+      <view class="char-count">{{customRequirement.length}}/200</view>
+    </view>
+
+    <!-- 艺术肌理 -->
+    <view class="section">
+      <view class="section-title">🪨 艺术肌理</view>
+      <view class="option-row">
+        <view
+          wx:for="{{textures}}" wx:key="id"
+          class="chip {{selectedTextureId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}" data-name="{{item.optionName}}"
+          bindtap="selectTexture"
+        >{{item.optionName}}</view>
+      </view>
+    </view>
+
+    <!-- 墙面颜色 -->
+    <view class="section">
+      <view class="section-title">🎯 墙面色号</view>
+      <view class="color-row">
+        <view
+          wx:for="{{wallColors}}" wx:key="id"
+          class="color-chip {{selectedWallColorId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}" data-code="{{item.optionKey}}"
+          bindtap="selectWallColor"
+        >
+          <view class="color-swatch" style="background:{{item.colorHex}}"></view>
+          <view class="color-label">{{item.optionKey}}</view>
+          <view class="color-name">{{item.optionName}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 软装细节（仅室内） -->
+    <view wx:if="{{scene === 'INDOOR' && softDecorations.length > 0}}" class="section">
+      <view class="section-title">🛋 软装细节 <text class="tip-text">（多选）</text></view>
+      <view class="option-row">
+        <view
+          wx:for="{{softDecorations}}" wx:key="id"
+          class="chip soft-chip {{selectedSoftIds[item.id] ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="toggleSoft"
+        >{{item.optionName}}</view>
+      </view>
+    </view>
+
+    <!-- 自定义要求 -->
+    <view class="section">
+      <view class="section-title">💬 自定义改造要求 <text class="tip-text">（选填）</text></view>
+      <textarea
+        class="custom-input"
+        placeholder="例如：希望客厅更明亮一些、保留原来的窗户结构..."
+        maxlength="200"
+        value="{{customRequirement}}"
+        bindinput="onInputRequirement"
+      />
+      <view class="char-count">{{customRequirement.length}}/200</view>
+    </view>
+  </block>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="cost-info">
+      <text class="cost-label">本次消耗</text>
+      <text class="cost-value">10 积分</text>
+    </view>
+    <view class="submit-btn {{submitting ? 'disabled' : ''}}" bindtap="submitGenerate">
+      {{submitting ? '提交中...' : '✨ AI 生成效果图'}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+<view class="page-container">
+  <view class="hero-section">
+    <view class="brand-icon">🏠</view>
+    <view class="brand-name">新装 · 房子魔法空间</view>
+    <view class="brand-slogan">上传空间照片，AI一键生成装修效果图</view>
+    <view class="version-text">v1.0.0</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">关于我们</view>
+    <view class="card-text">「房子魔法空间」是「新装」品牌旗下的AI空间改造效果图生成平台。我们利用先进的人工智能图像生成技术，帮助用户快速预览房屋装修和建筑改造效果。</view>
+    <view class="card-text">无需专业设计技能，只需上传您的房屋照片、选择喜欢的风格和颜色，AI就能在几十秒内生成逼真的装修效果参考图。</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">适用场景</view>
+    <view class="tag-list">
+      <view class="tag">室内装修</view>
+      <view class="tag">外墙翻新</view>
+      <view class="tag">庭院改造</view>
+      <view class="tag">门头设计</view>
+      <view class="tag">软装搭配</view>
+      <view class="tag">风格参考</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">适用人群</view>
+    <view class="card-text">• 准备装修或翻新的业主</view>
+    <view class="card-text">• 建材门店和涂料门店</view>
+    <view class="card-text">• 室内设计师和装修从业者</view>
+    <view class="card-text">• 需要快速出参考图的销售人员</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">技术能力</view>
+    <view class="card-text">• 支持9种装修风格和5种艺术肌理效果</view>
+    <view class="card-text">• 墙面颜色支持多种色号选择</view>
+    <view class="card-text">• 室内场景支持10种软装元素优化</view>
+    <view class="card-text">• 基于原图保留空间结构进行图生图改造</view>
+    <view class="card-text">• AI模型由阿里云DashScope提供支持</view>
+  </view>
+</view>

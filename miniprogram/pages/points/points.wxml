@@ -1,0 +1,27 @@
+<view class="page-container">
+  <view class="balance-card">
+    <view class="balance-label">当前积分</view>
+    <view class="balance-num">{{balance}}</view>
+    <view class="balance-info">每次生成消耗 {{costPerGenerate}} 积分 · 还可生成 {{remainingGenerations}} 次</view>
+  </view>
+
+  <view class="section-title">积分明细</view>
+
+  <view wx:if="{{loading}}" class="empty-state">加载中...</view>
+  <view wx:elif="{{records.length === 0}}" class="empty-state">
+    <view class="empty-text">暂无积分记录</view>
+  </view>
+
+  <block wx:else>
+    <view wx:for="{{records}}" wx:key="id" class="record-item">
+      <view class="record-left">
+        <view class="record-type">{{item.recordTypeDesc || item.recordType}}</view>
+        <view class="record-time">{{item.createdAt}}</view>
+      </view>
+      <view class="record-amount {{item.changeAmount > 0 ? 'positive' : 'negative'}}">
+        {{item.changeAmount > 0 ? '+' : ''}}{{item.changeAmount}}
+      </view>
+    </view>
+    <view wx:if="{{hasMore}}" class="load-more" bindtap="loadMore">加载更多...</view>
+  </block>
+</view>

@@ -1,0 +1,56 @@
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      mode: never
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+
+sa-token:
+  token-name: satoken
+  timeout: 604800
+  is-concurrent: true
+  is-log: false
+
+dashscope:
+  api-key: ${DASHSCOPE_API_KEY:test-key}
+  model: qwen-image-edit-plus
+
+wx:
+  app-id: wx_test
+  app-secret: test_secret
+  dev-mode: true
+
+points:
+  register-gift: 100
+  generate-cost: 10
+
+file:
+  storage:
+    type: local
+    local-path: upload
+    max-size-mb: 10
+    allowed-formats: jpg,jpeg,png,webp
+
+logging:
+  level:
+    root: WARN
+    com.xinzhuang.magicspace: DEBUG

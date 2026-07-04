@@ -1,0 +1,51 @@
+# ========================================
+# 开发环境配置
+# ========================================
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/house_magic_space?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true
+    username: root
+    password: ${MYSQL_PASSWORD:1234}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  sql:
+    init:
+      mode: never
+
+# CORS 配置（开发阶段允许本地）
+cors:
+  allowed-origins: http://localhost:*,http://127.0.0.1:*
+
+# DashScope AI 配置
+dashscope:
+  api-key: ${DASHSCOPE_API_KEY:}
+  model: qwen-image-edit-plus
+  connect-timeout: 10000
+  read-timeout: 120000
+
+# 文件存储
+file:
+  storage:
+    type: local
+    local-path: upload
+    max-size-mb: 10
+    allowed-formats: jpg,jpeg,png,webp
+
+# 微信小程序配置
+wx:
+  app-id: ${WX_APP_ID:wxdb606d67584fb8eb}
+  app-secret: ${WX_APP_SECRET:}
+  dev-mode: true
+
+# 积分配置
+points:
+  register-gift: 100
+  generate-cost: 10
+
+# 详细日志
+logging:
+  level:
+    com.xinzhuang.magicspace: DEBUG
+    com.baomidou.mybatisplus: DEBUG
+    org.springframework.jdbc: DEBUG

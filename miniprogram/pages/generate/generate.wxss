@@ -1,0 +1,60 @@
+/* 生成进度页面样式 */
+.page-container {
+  min-height: 100vh; background: #2C3E50;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 80rpx 40rpx;
+}
+
+/* 状态头部 */
+.status-header { text-align: center; margin-bottom: 60rpx; }
+.header-icon { font-size: 100rpx; margin-bottom: 24rpx; }
+.header-title { font-size: 36rpx; font-weight: 600; color: #fff; margin-bottom: 12rpx; }
+.header-error { font-size: 26rpx; color: #F39C12; margin-top: 10rpx; }
+
+/* 进度条 */
+.progress-section { width: 100%; }
+.progress-bar-wrap {
+  width: 100%; height: 8rpx; background: rgba(255,255,255,0.2);
+  border-radius: 4rpx; margin-bottom: 50rpx; overflow: hidden;
+}
+.progress-bar {
+  height: 100%; background: linear-gradient(90deg, #C9A96E, #D4B896);
+  border-radius: 4rpx; transition: width 0.5s ease;
+}
+
+/* 步骤 */
+.steps-list { display: flex; flex-direction: column; gap: 30rpx; }
+.step-item {
+  display: flex; align-items: center; padding: 20rpx 30rpx;
+  background: rgba(255,255,255,0.08); border-radius: 12rpx;
+  transition: all 0.3s;
+}
+.step-item.active { background: rgba(201,169,110,0.2); }
+.step-item.done { opacity: 0.6; }
+.step-dot {
+  width: 44rpx; height: 44rpx; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24rpx; margin-right: 20rpx;
+  background: rgba(255,255,255,0.15); color: #aaa;
+}
+.step-item.active .step-dot { background: #C9A96E; color: #fff; }
+.step-item.done .step-dot { background: rgba(201,169,110,0.5); color: #fff; }
+.step-label { flex: 1; font-size: 28rpx; color: #DDD; }
+.step-item.active .step-label { color: #C9A96E; font-weight: 500; }
+.step-check { font-size: 28rpx; }
+
+/* 成功 */
+.success-section { text-align: center; margin-top: 60rpx; }
+.success-anim { font-size: 120rpx; margin-bottom: 24rpx; }
+.success-text { font-size: 32rpx; color: #C9A96E; }
+
+/* 失败 */
+.fail-section { text-align: center; margin-top: 60rpx; }
+.fail-icon { font-size: 100rpx; margin-bottom: 24rpx; }
+.fail-text { font-size: 28rpx; color: #DDD; margin-bottom: 40rpx; }
+.fail-actions { display: flex; gap: 20rpx; justify-content: center; }
+.btn-primary, .btn-outline {
+  padding: 20rpx 50rpx; border-radius: 40rpx; font-size: 28rpx;
+}
+.btn-primary { background: #C9A96E; color: #fff; }
+.btn-outline { background: transparent; color: #C9A96E; border: 2rpx solid #C9A96E; }

@@ -1,0 +1,136 @@
+/**
+ * 房子魔法空间 · 新装 — 全局样式
+ * 设计风格：简约精美 · 现代家装风 · 卡片式布局 · 大圆角 · 轻阴影
+ */
+
+/* === 全局变量 === */
+page {
+  --color-primary: #2C3E50;
+  --color-primary-light: #3D5166;
+  --color-accent: #C9A96E;
+  --color-accent-light: #D4B896;
+  --color-bg: #F5F5F5;
+  --color-bg-card: #FFFFFF;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-text-muted: #999999;
+  --color-border: #E8E8E8;
+  --color-success: #27AE60;
+  --color-error: #E74C3C;
+  --color-warning: #F39C12;
+
+  --radius-sm: 8rpx;
+  --radius-md: 16rpx;
+  --radius-lg: 24rpx;
+
+  --shadow-sm: 0 2rpx 8rpx rgba(0,0,0,0.04);
+  --shadow-md: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  --shadow-lg: 0 8rpx 40rpx rgba(0,0,0,0.12);
+
+  --font-xs: 22rpx;
+  --font-sm: 26rpx;
+  --font-md: 28rpx;
+  --font-lg: 32rpx;
+  --font-xl: 36rpx;
+  --font-xxl: 44rpx;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', sans-serif;
+  font-size: var(--font-md);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+}
+
+/* === 通用工具类 === */
+.page-container {
+  min-height: 100vh;
+  padding-bottom: 20rpx;
+}
+
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin: 20rpx;
+  padding: 30rpx;
+}
+
+.card-title {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 16rpx;
+}
+
+.card-desc {
+  font-size: var(--font-sm);
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-md);
+  font-weight: 500;
+  padding: 20rpx 60rpx;
+}
+
+.btn-primary:active {
+  opacity: 0.85;
+}
+
+.btn-primary[disabled] {
+  background: #ccc;
+  color: #999;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2rpx solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-md);
+  padding: 18rpx 60rpx;
+}
+
+.section-title {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  padding: 30rpx 20rpx 10rpx;
+}
+
+.section-subtitle {
+  font-size: var(--font-sm);
+  color: var(--color-text-light);
+  padding: 0 20rpx 20rpx;
+}
+
+.text-center { text-align: center; }
+.text-muted { color: var(--color-text-muted); }
+.text-accent { color: var(--color-accent); }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
